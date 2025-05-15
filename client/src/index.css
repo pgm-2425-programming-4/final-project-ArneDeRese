@@ -3,3 +3,9 @@
 body {
     margin: 1rem;
 }
+table {
+    margin-bottom: 2rem;
+}
+tr {
+    padding: 0.5rem;
+}
