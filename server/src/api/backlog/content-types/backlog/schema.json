@@ -19,6 +19,12 @@
     },
     "name": {
       "type": "string"
+    },
+    "statuses": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::status.status",
+      "inversedBy": "backlogs"
     }
   }
 }

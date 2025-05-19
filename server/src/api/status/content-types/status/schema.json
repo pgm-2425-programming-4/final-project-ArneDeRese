@@ -11,10 +11,14 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "name": {
+      "type": "string"
+    },
     "backlogs": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::backlog.backlog"
+      "target": "api::backlog.backlog",
+      "mappedBy": "statuses"
     }
   }
 }
