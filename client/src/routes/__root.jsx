@@ -1,15 +1,30 @@
-import * as React from 'react'
-import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 export const Route = createRootRoute({
-  component: RootComponent,
-})
-
-function RootComponent() {
-  return (
-    <React.Fragment>
-      <div>Hello "__root"!</div>
+  component: () => (
+    <>
+    <nav>
+        <ul>
+            <li>
+                <Link to="/">
+                    Home
+                </Link>
+            </li>
+            <li>
+                <Link to="/about">
+                    About
+                </Link>
+            </li>
+            <li>
+                <Link to="/users/$users">
+                    Users
+                </Link>
+            </li>
+        </ul>
+    </nav>
       <Outlet />
-    </React.Fragment>
-  )
-}
+      <TanStackRouterDevtools />
+    </>
+  ),
+})
