@@ -17,8 +17,8 @@ export const Route = createRootRoute({
                 </Link>
             </li>
             <li>
-                <Link to="/users/$users">
-                    Users
+                <Link to="/projects/$projectsId">
+                    Projects
                 </Link>
             </li>
         </ul>
