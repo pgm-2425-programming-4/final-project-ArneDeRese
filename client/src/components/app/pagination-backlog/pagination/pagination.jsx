@@ -1,6 +1,5 @@
 import { PAGE_SIZE_OPTIONS } from "../../../../constants/constants";
 
-
 export function Pagination({
   currentPage,
   pageCount,
@@ -44,7 +43,7 @@ export function Pagination({
       pageLinks.push(
         <li key={index}>
           <span className="pagination-ellipsis">&hellip;</span>
-        </li>
+        </li>,
       );
     } else {
       pageLinks.push(
@@ -59,7 +58,7 @@ export function Pagination({
           >
             {pageNumber}
           </button>
-        </li>
+        </li>,
       );
     }
   });
