@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "backlogs",
+  "collectionName": "tasks",
   "info": {
-    "singularName": "backlog",
-    "pluralName": "backlogs",
-    "displayName": "Backlog",
+    "singularName": "task",
+    "pluralName": "tasks",
+    "displayName": "Task",
     "description": ""
   },
   "options": {
@@ -12,19 +12,17 @@
   },
   "attributes": {
     "Title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "description": {
+    "Description": {
       "type": "text"
-    },
-    "name": {
-      "type": "string"
     },
     "statuses": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::status.status",
-      "inversedBy": "backlogs"
+      "inversedBy": "tasks"
     }
   }
 }

@@ -9,7 +9,7 @@ export function PaginatedBacklogList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZE_OPTIONS[0]);
-  const [backlogs, setBacklogs] = useState([]);
+  const [tasks , setBacklogs] = useState([]);
 
   function handlePageChanged(pageNumber) {
     setCurrentPage(pageNumber);
@@ -20,7 +20,7 @@ export function PaginatedBacklogList() {
   }
 
   const { isPending, isError, error, data } = useQuery({
-    queryKey: ["backlogs", { currentPage, pageSize }],
+    queryKey: ["tasks", { currentPage, pageSize }],
     queryFn: () => fetchBacklog(currentPage, pageSize),
   });
 
@@ -44,7 +44,7 @@ export function PaginatedBacklogList() {
   return (
     <>
       <div>
-        <BacklogList backlogs={backlogs} />
+        <BacklogList tasks={tasks} />
       </div>
       <Pagination
         currentPage={currentPage}

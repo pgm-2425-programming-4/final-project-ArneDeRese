@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * backlog controller
+ * task controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::backlog.backlog');
+module.exports = createCoreController('api::task.task');

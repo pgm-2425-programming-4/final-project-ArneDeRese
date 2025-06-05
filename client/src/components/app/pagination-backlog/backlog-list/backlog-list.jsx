@@ -1,4 +1,4 @@
-export function BacklogList({ backlogs }) {
+export function BacklogList({ tasks }) {
   return (
     <table>
       <thead>
@@ -8,11 +8,11 @@ export function BacklogList({ backlogs }) {
         </tr>
       </thead>
       <tbody>
-        {backlogs.map((backlog) => {
+        {tasks.map((task) => {
           return (
-            <tr key={backlog.id}>
-              <td>{backlog.Title}</td>
-              <td>{backlog.description}</td>
+            <tr key={task.id}>
+              <td>{task.Title}</td>
+              <td>{task.Description}</td>
             </tr>
           );
         })}

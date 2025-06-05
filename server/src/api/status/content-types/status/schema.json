@@ -4,20 +4,19 @@
   "info": {
     "singularName": "status",
     "pluralName": "statuses",
-    "displayName": "Status",
-    "description": ""
+    "displayName": "Status"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "name": {
+    "Name": {
       "type": "string"
     },
-    "backlogs": {
+    "tasks": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::backlog.backlog",
+      "target": "api::task.task",
       "mappedBy": "statuses"
     }
   }
