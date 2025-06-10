@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProjectsProjectsIdImport } from './routes/projects/$projectsId'
+import { Route as BacklogBacklogImport } from './routes/backlog/$backlog'
 import { Route as ProjectsProjectsIdProjecstTitleImport } from './routes/projects/projects-id/$projecstTitle'
 
 // Create/Update Routes
@@ -33,6 +34,12 @@ const IndexRoute = IndexImport.update({
 const ProjectsProjectsIdRoute = ProjectsProjectsIdImport.update({
   id: '/projects/$projectsId',
   path: '/projects/$projectsId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BacklogBacklogRoute = BacklogBacklogImport.update({
+  id: '/backlog/$backlog',
+  path: '/backlog/$backlog',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -61,6 +68,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
+    '/backlog/$backlog': {
+      id: '/backlog/$backlog'
+      path: '/backlog/$backlog'
+      fullPath: '/backlog/$backlog'
+      preLoaderRoute: typeof BacklogBacklogImport
+      parentRoute: typeof rootRoute
+    }
     '/projects/$projectsId': {
       id: '/projects/$projectsId'
       path: '/projects/$projectsId'
@@ -83,6 +97,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/backlog/$backlog': typeof BacklogBacklogRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
   '/projects/projects-id/$projecstTitle': typeof ProjectsProjectsIdProjecstTitleRoute
 }
@@ -90,6 +105,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/backlog/$backlog': typeof BacklogBacklogRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
   '/projects/projects-id/$projecstTitle': typeof ProjectsProjectsIdProjecstTitleRoute
 }
@@ -98,6 +114,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/backlog/$backlog': typeof BacklogBacklogRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
   '/projects/projects-id/$projecstTitle': typeof ProjectsProjectsIdProjecstTitleRoute
 }
@@ -107,18 +124,21 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/backlog/$backlog'
     | '/projects/$projectsId'
     | '/projects/projects-id/$projecstTitle'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/backlog/$backlog'
     | '/projects/$projectsId'
     | '/projects/projects-id/$projecstTitle'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/backlog/$backlog'
     | '/projects/$projectsId'
     | '/projects/projects-id/$projecstTitle'
   fileRoutesById: FileRoutesById
@@ -127,6 +147,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BacklogBacklogRoute: typeof BacklogBacklogRoute
   ProjectsProjectsIdRoute: typeof ProjectsProjectsIdRoute
   ProjectsProjectsIdProjecstTitleRoute: typeof ProjectsProjectsIdProjecstTitleRoute
 }
@@ -134,6 +155,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BacklogBacklogRoute: BacklogBacklogRoute,
   ProjectsProjectsIdRoute: ProjectsProjectsIdRoute,
   ProjectsProjectsIdProjecstTitleRoute: ProjectsProjectsIdProjecstTitleRoute,
 }
@@ -150,6 +172,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/backlog/$backlog",
         "/projects/$projectsId",
         "/projects/projects-id/$projecstTitle"
       ]
@@ -159,6 +182,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.jsx"
+    },
+    "/backlog/$backlog": {
+      "filePath": "backlog/$backlog.jsx"
     },
     "/projects/$projectsId": {
       "filePath": "projects/$projectsId.jsx"
