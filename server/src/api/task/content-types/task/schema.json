@@ -4,31 +4,23 @@
   "info": {
     "singularName": "task",
     "pluralName": "tasks",
-    "displayName": "Task",
-    "description": ""
+    "displayName": "Task"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "Title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "Description": {
       "type": "text"
     },
-    "statuses": {
+    "projects": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::status.status",
-      "inversedBy": "tasks"
-    },
-    "project": {
-      "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::project.project",
-      "inversedBy": "tasks"
+      "mappedBy": "task"
     }
   }
 }

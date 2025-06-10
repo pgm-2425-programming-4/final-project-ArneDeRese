@@ -1,9 +1,9 @@
-import { createFileRoute, Link, notFound, } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { fetchProjectId } from "../../data/fetch-project";
 
 export const Route = createFileRoute("/projects/$projects")({
-  loader: async ({ params }) => {
-    const data = await fetchProjectId(params.projectsId);
+  loader: async () => {
+    const data = await fetchProjectId();
     if (!data) {
       throw notFound();
     }
@@ -19,14 +19,14 @@ function RouteComponent() {
   return (
     <div>
       {projectsData.data.map((project) => (
-
         <Link
           key={project.id}
-          to= '/projects/projects-id/$task' params={{ projectDetail: project.id }} >
-        <h1 key={project.id}>{project.title}</h1>
+          to="/projects/$projectsId"
+          params={{ projectsId: project.id }}
+        >
+          <h1>{project.Title}</h1>
         </Link>
       ))}
-  
     </div>
   );
 }
