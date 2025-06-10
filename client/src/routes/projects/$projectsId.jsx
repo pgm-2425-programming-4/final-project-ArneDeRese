@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, } from "@tanstack/react-router";
-import { fetchProjectId } from "../../data/fetch-project-by-id";
+import { fetchProjectId } from "../../data/fetch-project";
 
 export const Route = createFileRoute("/projects/$projectsId")({
   loader: async ({ params }) => {
