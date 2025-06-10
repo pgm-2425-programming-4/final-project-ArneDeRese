@@ -1,4 +1,4 @@
-import { createFileRoute, notFound, } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, } from "@tanstack/react-router";
 import { fetchProjectId } from "../../data/fetch-project-by-id";
 
 export const Route = createFileRoute("/projects/$projectsId")({
@@ -19,8 +19,14 @@ function RouteComponent() {
   return (
     <div>
       {projectsData.data.map((project) => (
+
+        <Link
+          key={project.id}
+          to= '/projects/projects-id/$projecstTitle' >
         <h1 key={project.id}>{project.title}</h1>
+        </Link>
       ))}
+  
     </div>
   );
 }
