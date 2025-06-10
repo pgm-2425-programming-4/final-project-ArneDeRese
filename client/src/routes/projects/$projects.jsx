@@ -22,7 +22,7 @@ function RouteComponent() {
 
         <Link
           key={project.id}
-          to= '/projects/projects-id/$task' >
+          to= '/projects/projects-id/$task' params={{ projectDetail: project.id }} >
         <h1 key={project.id}>{project.title}</h1>
         </Link>
       ))}
