@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound, } from "@tanstack/react-router";
 import { fetchProjectId } from "../../data/fetch-project";
 
-export const Route = createFileRoute("/projects/$projectsId")({
+export const Route = createFileRoute("/projects/$projects")({
   loader: async ({ params }) => {
     const data = await fetchProjectId(params.projectsId);
     if (!data) {
