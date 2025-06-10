@@ -14,11 +14,13 @@ export const Route = createFileRoute("/projects/$projectsId")({
 });
 
 function RouteComponent() {
-  const data = Route.useLoaderData();
+  const projectsData = Route.useLoaderData();
+
   return (
-   <div>
-    {data.title}
-   </div>
-    
+    <div>
+      {projectsData.data.map((project) => (
+        <h1 key={project.id}>{project.title}</h1>
+      ))}
+    </div>
   );
 }
