@@ -7,7 +7,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div>
-        <PaginatedBacklogList />
+        
       </div>
     </QueryClientProvider>
   );
