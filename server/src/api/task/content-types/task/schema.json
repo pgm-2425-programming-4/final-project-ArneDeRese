@@ -17,11 +17,11 @@
     "Description": {
       "type": "text"
     },
-    "project": {
+    "projects": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::project.project",
-      "inversedBy": "tasks"
+      "mappedBy": "task"
     },
     "statuses": {
       "type": "relation",
