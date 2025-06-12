@@ -12,6 +12,12 @@
   "attributes": {
     "Name": {
       "type": "string"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "statuses"
     }
   }
 }

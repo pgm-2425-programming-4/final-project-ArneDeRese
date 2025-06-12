@@ -2,7 +2,7 @@ import { API_TOKEN, API_URL } from "../constants/constants";
 
 
 export async function fetchProjectById(documentId) {
-    const response = await fetch(`${API_URL}/projects/projects-id/?filters[documentId][$eq]=${documentId}&populate=*`, {
+    const response = await fetch(`${API_URL}/projects/?filters[documentId][$eq]=${documentId}&populate=*`, {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
         },

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "task",
     "pluralName": "tasks",
-    "displayName": "Task"
+    "displayName": "Task",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,11 +17,17 @@
     "Description": {
       "type": "text"
     },
-    "projects": {
+    "project": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::project.project",
-      "mappedBy": "task"
+      "inversedBy": "tasks"
+    },
+    "statuses": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::status.status",
+      "inversedBy": "tasks"
     }
   }
 }
