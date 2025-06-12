@@ -21,7 +21,7 @@ function RouteComponent() {
       {projectsData.data.map((project) => (
         <Link
           key={project.id}
-          to="/projects/projects-id/$projectsId"
+          to="/projects/$projectsId"
           params={{ projectsId: project.id }}
         >
           <h1>{project.Title}</h1>

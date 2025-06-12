@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { fetchProjectById } from '../../../data/fetch-project-by-id'
+import { fetchProjectById } from '../../data/fetch-project-by-id'
 
-export const Route = createFileRoute('/projects/projects-id/$projectsId')({
+export const Route = createFileRoute('/projects/$projectsId')({
   loader: async ({ params }) => {
     const data = await fetchProjectById(params.projectsId)
     if (!data || !data.data) {
@@ -17,7 +17,7 @@ function RouteComponent() {
 
   return (
     <div>
-      {data[1].task.title}
+      {data[1].tasks.title}
     </div>
   );
 }
