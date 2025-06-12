@@ -1,5 +1,3 @@
-import { UpdateTaskStatus } from "../updated/updated";
-
 export function BacklogList({ tasks }) {
   const backlogTasks = tasks.filter(
     (task) => task.statuses?.Name?.toLowerCase() === "backlog"
@@ -19,13 +17,7 @@ export function BacklogList({ tasks }) {
             <tr key={task.id}>
               <td>{task.Title}</td>
               <td>{task.Description}</td>
-              <td>
-                <UpdateTaskStatus
-                  //task={task}
-                  //onStatusUpdated={() => {
-                  //}}
-                />
-              </td>
+              <td>{task.statuses.Name}</td>
             </tr>
           );
         })}
