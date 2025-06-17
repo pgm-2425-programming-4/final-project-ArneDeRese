@@ -30,6 +30,11 @@ export const Route = createRootRoute({
                     Backlog
                 </Link>
             </li>
+            <li>
+                <Link to="/post/$post">
+                    Post
+                </Link>
+            </li>
         </ul>
     </nav>}
       <Outlet />

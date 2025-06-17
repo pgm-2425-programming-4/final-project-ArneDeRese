@@ -3,6 +3,7 @@ export function BacklogList({ tasks }) {
     (task) => task.statuses?.Name?.toLowerCase() === "backlog"
   );
   return (
+    <div>
     <table>
       <thead>
         <tr>
@@ -23,5 +24,7 @@ export function BacklogList({ tasks }) {
         })}
       </tbody>
     </table>
+    </div>
+    
   );
 }
