@@ -13,7 +13,6 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
-import { Route as ProjectsProjectsIdImport } from './routes/projects/$projectsId'
 import { Route as ProjectsProjectsImport } from './routes/projects/$projects'
 import { Route as PostPostImport } from './routes/post/$post'
 import { Route as BoardBoardImport } from './routes/board/$board'
@@ -31,12 +30,6 @@ const AboutRoute = AboutImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ProjectsProjectsIdRoute = ProjectsProjectsIdImport.update({
-  id: '/projects/$projectsId',
-  path: '/projects/$projectsId',
   getParentRoute: () => rootRoute,
 } as any)
 
