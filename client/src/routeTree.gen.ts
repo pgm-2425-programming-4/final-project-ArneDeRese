@@ -16,6 +16,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as ProjectsProjectsIdImport } from './routes/projects/$projectsId'
 import { Route as ProjectsProjectsImport } from './routes/projects/$projects'
 import { Route as PostPostImport } from './routes/post/$post'
+import { Route as BoardBoardImport } from './routes/board/$board'
 import { Route as BacklogBacklogImport } from './routes/backlog/$backlog'
 
 // Create/Update Routes
@@ -50,6 +51,12 @@ const PostPostRoute = PostPostImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const BoardBoardRoute = BoardBoardImport.update({
+  id: '/board/$board',
+  path: '/board/$board',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const BacklogBacklogRoute = BacklogBacklogImport.update({
   id: '/backlog/$backlog',
   path: '/backlog/$backlog',
@@ -79,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/backlog/$backlog'
       fullPath: '/backlog/$backlog'
       preLoaderRoute: typeof BacklogBacklogImport
+      parentRoute: typeof rootRoute
+    }
+    '/board/$board': {
+      id: '/board/$board'
+      path: '/board/$board'
+      fullPath: '/board/$board'
+      preLoaderRoute: typeof BoardBoardImport
       parentRoute: typeof rootRoute
     }
     '/post/$post': {
@@ -111,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog/$backlog': typeof BacklogBacklogRoute
+  '/board/$board': typeof BoardBoardRoute
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
@@ -120,6 +135,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog/$backlog': typeof BacklogBacklogRoute
+  '/board/$board': typeof BoardBoardRoute
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
@@ -130,6 +146,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog/$backlog': typeof BacklogBacklogRoute
+  '/board/$board': typeof BoardBoardRoute
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
@@ -141,6 +158,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/backlog/$backlog'
+    | '/board/$board'
     | '/post/$post'
     | '/projects/$projects'
     | '/projects/$projectsId'
@@ -149,6 +167,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/backlog/$backlog'
+    | '/board/$board'
     | '/post/$post'
     | '/projects/$projects'
     | '/projects/$projectsId'
@@ -157,6 +176,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/backlog/$backlog'
+    | '/board/$board'
     | '/post/$post'
     | '/projects/$projects'
     | '/projects/$projectsId'
@@ -167,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BacklogBacklogRoute: typeof BacklogBacklogRoute
+  BoardBoardRoute: typeof BoardBoardRoute
   PostPostRoute: typeof PostPostRoute
   ProjectsProjectsRoute: typeof ProjectsProjectsRoute
   ProjectsProjectsIdRoute: typeof ProjectsProjectsIdRoute
@@ -176,6 +197,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BacklogBacklogRoute: BacklogBacklogRoute,
+  BoardBoardRoute: BoardBoardRoute,
   PostPostRoute: PostPostRoute,
   ProjectsProjectsRoute: ProjectsProjectsRoute,
   ProjectsProjectsIdRoute: ProjectsProjectsIdRoute,
@@ -194,6 +216,7 @@ export const routeTree = rootRoute
         "/",
         "/about",
         "/backlog/$backlog",
+        "/board/$board",
         "/post/$post",
         "/projects/$projects",
         "/projects/$projectsId"
@@ -207,6 +230,9 @@ export const routeTree = rootRoute
     },
     "/backlog/$backlog": {
       "filePath": "backlog/$backlog.jsx"
+    },
+    "/board/$board": {
+      "filePath": "board/$board.jsx"
     },
     "/post/$post": {
       "filePath": "post/$post.jsx"

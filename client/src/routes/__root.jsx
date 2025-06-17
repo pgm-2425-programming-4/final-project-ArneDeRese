@@ -26,13 +26,18 @@ export const Route = createRootRoute({
                 </Link>
             </li>
             <li>
+                <Link to="/board/$board">
+                    Task Board
+                </Link>
+            </li>
+            <li>
                 <Link to="/backlog/$backlog">
                     Backlog
                 </Link>
             </li>
             <li>
                 <Link to="/post/$post">
-                    Post
+                    add new task
                 </Link>
             </li>
         </ul>
