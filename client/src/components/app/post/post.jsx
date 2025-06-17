@@ -4,19 +4,25 @@ import { API_URL, API_TOKEN } from "../../../constants/constants.js";
 
  export const Create = () => {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const blog = { title, body, };
 
-    fetch(`${API_URL}/tasks?populate=*`, {
-      method: 'POST',
-      headers: { "Content-Type": "application/json", 
+    await fetch(`${API_URL}/tasks`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${API_TOKEN}`,
-       },
-      body: JSON.stringify(blog)
-  })}
+      },
+      body: JSON.stringify({
+        data: {
+          Title: title,
+          Description: description,
+        },
+      }),
+    });
+  }
 
   return (
     <div className="create">
@@ -32,12 +38,12 @@ import { API_URL, API_TOKEN } from "../../../constants/constants.js";
         <label>discription:</label>
         <textarea
           required
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         ></textarea>
         <button>Add Blog</button>
       </form>
     </div>
   );
 }
- 
+
