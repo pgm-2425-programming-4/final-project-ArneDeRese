@@ -1,16 +1,7 @@
-import { useEffect, useState } from "react";
-import { fetchTaks } from "../../../data/fetchTask";
 
-export function TaskDetail() {
-  const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    async function loadTasks() {
-      const data = await fetchTaks();
-      setTasks(data.data || []);
-    }
-    loadTasks();
-  }, []);
+export function TaskDetail({ tasks }) {
+  if (!tasks) return null;
 
   return (
     <div>
