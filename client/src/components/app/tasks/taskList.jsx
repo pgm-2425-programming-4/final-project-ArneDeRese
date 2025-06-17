@@ -1,11 +1,10 @@
-export function BacklogList({ tasks }) {;
+export function taskList ({ tasks }) {;
   return (
     <div>
     <table>
       <thead>
         <tr>
           <th>Title</th>
-          <th>Description</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -14,7 +13,6 @@ export function BacklogList({ tasks }) {;
           return (
             <tr key={task.id}>
               <td>{task.Title}</td>
-              <td>{task.Description}</td>
               <td>{task.statuses.Name}</td>
             </tr>
           );
