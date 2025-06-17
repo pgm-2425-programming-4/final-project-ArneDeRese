@@ -4,6 +4,7 @@ import { fetchBacklog } from "../../../data/fetchBacklog.js";
 import { useQuery } from "@tanstack/react-query";
 import { BacklogList } from "./backlog-list/backlog-list.jsx";
 import { Pagination } from "./pagination/pagination.jsx";
+import { addTask } from "../../../data/addTask.js";
 
 
 export function PaginatedBacklogList() {
@@ -45,7 +46,7 @@ export function PaginatedBacklogList() {
   return (
     <>
       <div>
-        <BacklogList tasks={tasks} />
+        <BacklogList tasks={tasks} onAddTask={addTask} />
       </div>
       <Pagination
         currentPage={currentPage}
