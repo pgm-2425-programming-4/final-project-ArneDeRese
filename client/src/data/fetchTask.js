@@ -10,6 +10,6 @@ export async function fetchTaks() {
     },
   );
   const data = await result.json();
-  console.log(data);
+;
   return data;
 }
