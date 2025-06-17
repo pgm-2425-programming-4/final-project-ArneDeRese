@@ -18,6 +18,7 @@ import { Route as ProjectsProjectsImport } from './routes/projects/$projects'
 import { Route as PostPostImport } from './routes/post/$post'
 import { Route as BoardBoardImport } from './routes/board/$board'
 import { Route as BacklogBacklogImport } from './routes/backlog/$backlog'
+import { Route as BoardTaskTaskIdImport } from './routes/board/task/$taskId'
 
 // Create/Update Routes
 
@@ -60,6 +61,12 @@ const BoardBoardRoute = BoardBoardImport.update({
 const BacklogBacklogRoute = BacklogBacklogImport.update({
   id: '/backlog/$backlog',
   path: '/backlog/$backlog',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BoardTaskTaskIdRoute = BoardTaskTaskIdImport.update({
+  id: '/board/task/$taskId',
+  path: '/board/task/$taskId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -116,6 +123,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsProjectsIdImport
       parentRoute: typeof rootRoute
     }
+    '/board/task/$taskId': {
+      id: '/board/task/$taskId'
+      path: '/board/task/$taskId'
+      fullPath: '/board/task/$taskId'
+      preLoaderRoute: typeof BoardTaskTaskIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -129,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
+  '/board/task/$taskId': typeof BoardTaskTaskIdRoute
 }
 
 export interface FileRoutesByTo {
@@ -139,6 +154,7 @@ export interface FileRoutesByTo {
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
+  '/board/task/$taskId': typeof BoardTaskTaskIdRoute
 }
 
 export interface FileRoutesById {
@@ -150,6 +166,7 @@ export interface FileRoutesById {
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/projects/$projectsId': typeof ProjectsProjectsIdRoute
+  '/board/task/$taskId': typeof BoardTaskTaskIdRoute
 }
 
 export interface FileRouteTypes {
@@ -162,6 +179,7 @@ export interface FileRouteTypes {
     | '/post/$post'
     | '/projects/$projects'
     | '/projects/$projectsId'
+    | '/board/task/$taskId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -171,6 +189,7 @@ export interface FileRouteTypes {
     | '/post/$post'
     | '/projects/$projects'
     | '/projects/$projectsId'
+    | '/board/task/$taskId'
   id:
     | '__root__'
     | '/'
@@ -180,6 +199,7 @@ export interface FileRouteTypes {
     | '/post/$post'
     | '/projects/$projects'
     | '/projects/$projectsId'
+    | '/board/task/$taskId'
   fileRoutesById: FileRoutesById
 }
 
@@ -191,6 +211,7 @@ export interface RootRouteChildren {
   PostPostRoute: typeof PostPostRoute
   ProjectsProjectsRoute: typeof ProjectsProjectsRoute
   ProjectsProjectsIdRoute: typeof ProjectsProjectsIdRoute
+  BoardTaskTaskIdRoute: typeof BoardTaskTaskIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -201,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostPostRoute: PostPostRoute,
   ProjectsProjectsRoute: ProjectsProjectsRoute,
   ProjectsProjectsIdRoute: ProjectsProjectsIdRoute,
+  BoardTaskTaskIdRoute: BoardTaskTaskIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -219,7 +241,8 @@ export const routeTree = rootRoute
         "/board/$board",
         "/post/$post",
         "/projects/$projects",
-        "/projects/$projectsId"
+        "/projects/$projectsId",
+        "/board/task/$taskId"
       ]
     },
     "/": {
@@ -242,6 +265,9 @@ export const routeTree = rootRoute
     },
     "/projects/$projectsId": {
       "filePath": "projects/$projectsId.jsx"
+    },
+    "/board/task/$taskId": {
+      "filePath": "board/task/$taskId.jsx"
     }
   }
 }
