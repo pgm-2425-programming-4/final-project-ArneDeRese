@@ -4,6 +4,10 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 const queryClient = new QueryClient()
 
+function NotFound() {
+  return <div>Pagina niet gevonden</div>;
+}
+
 export const Route = createRootRoute({
   component: () => (
     <QueryClientProvider client={queryClient}>
@@ -32,7 +36,7 @@ export const Route = createRootRoute({
             </li>
             <li>
                 <Link to="/post/$post">
-                    Post
+                    Add new task
                 </Link>
             </li>
         </ul>
@@ -41,4 +45,5 @@ export const Route = createRootRoute({
       <TanStackRouterDevtools />
     </QueryClientProvider>
   ),
+  notFoundComponent: NotFound,
 })
