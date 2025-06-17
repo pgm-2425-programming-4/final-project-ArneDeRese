@@ -18,14 +18,11 @@
       "type": "text"
     },
     "statuses": {
-    {
-    "statuses": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::status.status",
       "inversedBy": "tasks"
-  },
-  {
+    },
     "projects": {
       "type": "relation",
       "relation": "oneToMany",
@@ -37,7 +34,6 @@
       "relation": "manyToOne",
       "target": "api::project.project",
       "inversedBy": "tasks"
-    },
-
+    }
   }
 }
