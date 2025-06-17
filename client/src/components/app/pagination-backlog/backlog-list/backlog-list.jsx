@@ -1,5 +1,6 @@
 export function BacklogList({ tasks }) {
   return (
+    <div>
     <table>
       <thead>
         <tr>
@@ -18,5 +19,7 @@ export function BacklogList({ tasks }) {
         })}
       </tbody>
     </table>
+    </div>
+    
   );
 }
