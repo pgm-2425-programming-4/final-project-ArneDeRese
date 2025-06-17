@@ -14,11 +14,11 @@
     "Title": {
       "type": "string"
     },
-    "tasks": {
+    "task": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::task.task",
-      "mappedBy": "project"
+      "inversedBy": "projects"
     }
   }
 }
