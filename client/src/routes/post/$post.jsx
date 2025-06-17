@@ -1,26 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Create } from '../../components/app/post/post'
 
 export const Route = createFileRoute('/post/$post')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return <div>
-
-  <form action="" method="post">
+  return (
     <div>
-      <label htmlFor="title">Title</label>
-      <input type="text" id="title" name="title" />
+      <Create />
     </div>
-
-    <div>
-      <label htmlFor="content">Content</label>
-      <textarea id="content" name="content"></textarea>
-    </div>
-
-    <button type="submit">Submit</button>
-
-  </form>
-
-  </div>
+  )
 }
