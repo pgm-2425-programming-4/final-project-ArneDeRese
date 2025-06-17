@@ -36,7 +36,7 @@ export const Route = createRootRoute({
             </li>
             <li>
                 <Link to="/post/$post">
-                    Post
+                    Add new task
                 </Link>
             </li>
         </ul>
