@@ -15,8 +15,10 @@ import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProjectsProjectsImport } from './routes/projects/$projects'
 import { Route as PostPostImport } from './routes/post/$post'
+import { Route as BoardBoardImport } from './routes/board/$board'
 import { Route as BacklogBacklogImport } from './routes/backlog/$backlog'
 import { Route as ProjectsProjectsIdProjectsIdImport } from './routes/projects/projects-id/projectsId'
+import { Route as BoardTaskTaskIdImport } from './routes/board/task/$taskId'
 
 // Create/Update Routes
 
@@ -44,6 +46,12 @@ const PostPostRoute = PostPostImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const BoardBoardRoute = BoardBoardImport.update({
+  id: '/board/$board',
+  path: '/board/$board',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const BacklogBacklogRoute = BacklogBacklogImport.update({
   id: '/backlog/$backlog',
   path: '/backlog/$backlog',
@@ -56,6 +64,12 @@ const ProjectsProjectsIdProjectsIdRoute =
     path: '/projects/projects-id/projectsId',
     getParentRoute: () => rootRoute,
   } as any)
+const BoardTaskTaskIdRoute = BoardTaskTaskIdImport.update({
+  id: '/board/task/$taskId',
+  path: '/board/task/$taskId',
+  getParentRoute: () => rootRoute,
+} as any)
+
 
 // Populate the FileRoutesByPath interface
 
@@ -82,6 +96,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BacklogBacklogImport
       parentRoute: typeof rootRoute
     }
+    '/board/$board': {
+      id: '/board/$board'
+      path: '/board/$board'
+      fullPath: '/board/$board'
+      preLoaderRoute: typeof BoardBoardImport
+      parentRoute: typeof rootRoute
+    }
     '/post/$post': {
       id: '/post/$post'
       path: '/post/$post'
@@ -96,6 +117,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsProjectsImport
       parentRoute: typeof rootRoute
     }
+    '/board/task/$taskId': {
+      id: '/board/task/$taskId'
+      path: '/board/task/$taskId'
+      fullPath: '/board/task/$taskId'
+      preLoaderRoute: typeof BoardTaskTaskIdImport
+      parentRoute: typeof rootRoute
+    }
+
     '/projects/projects-id/projectsId': {
       id: '/projects/projects-id/projectsId'
       path: '/projects/projects-id/projectsId'
@@ -112,8 +141,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog/$backlog': typeof BacklogBacklogRoute
+  '/board/$board': typeof BoardBoardRoute
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
+
+  '/board/task/$taskId': typeof BoardTaskTaskIdRoute
+
   '/projects/projects-id/projectsId': typeof ProjectsProjectsIdProjectsIdRoute
 }
 
@@ -121,8 +154,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog/$backlog': typeof BacklogBacklogRoute
+  '/board/$board': typeof BoardBoardRoute
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
+  '/board/task/$taskId': typeof BoardTaskTaskIdRoute
+
   '/projects/projects-id/projectsId': typeof ProjectsProjectsIdProjectsIdRoute
 }
 
@@ -131,8 +167,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog/$backlog': typeof BacklogBacklogRoute
+  '/board/$board': typeof BoardBoardRoute
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
+
+  '/board/task/$taskId': typeof BoardTaskTaskIdRoute
+
   '/projects/projects-id/projectsId': typeof ProjectsProjectsIdProjectsIdRoute
 }
 
@@ -142,24 +182,35 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/backlog/$backlog'
+    | '/board/$board'
     | '/post/$post'
     | '/projects/$projects'
+
+    | '/board/task/$taskId'
+
     | '/projects/projects-id/projectsId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/backlog/$backlog'
+    | '/board/$board'
     | '/post/$post'
     | '/projects/$projects'
+    | '/board/task/$taskId'
+
     | '/projects/projects-id/projectsId'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/backlog/$backlog'
+    | '/board/$board'
     | '/post/$post'
     | '/projects/$projects'
+
+    | '/board/task/$taskId'
+
     | '/projects/projects-id/projectsId'
   fileRoutesById: FileRoutesById
 }
@@ -168,8 +219,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BacklogBacklogRoute: typeof BacklogBacklogRoute
+  BoardBoardRoute: typeof BoardBoardRoute
   PostPostRoute: typeof PostPostRoute
   ProjectsProjectsRoute: typeof ProjectsProjectsRoute
+  BoardTaskTaskIdRoute: typeof BoardTaskTaskIdRoute
+
   ProjectsProjectsIdProjectsIdRoute: typeof ProjectsProjectsIdProjectsIdRoute
 }
 
@@ -177,8 +231,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BacklogBacklogRoute: BacklogBacklogRoute,
+  BoardBoardRoute: BoardBoardRoute,
   PostPostRoute: PostPostRoute,
   ProjectsProjectsRoute: ProjectsProjectsRoute,
+
+  BoardTaskTaskIdRoute: BoardTaskTaskIdRoute,
+
   ProjectsProjectsIdProjectsIdRoute: ProjectsProjectsIdProjectsIdRoute,
 }
 
@@ -195,8 +253,12 @@ export const routeTree = rootRoute
         "/",
         "/about",
         "/backlog/$backlog",
+        "/board/$board",
         "/post/$post",
         "/projects/$projects",
+
+        "/board/task/$taskId",
+
         "/projects/projects-id/projectsId"
       ]
     },
@@ -209,12 +271,20 @@ export const routeTree = rootRoute
     "/backlog/$backlog": {
       "filePath": "backlog/$backlog.jsx"
     },
+    "/board/$board": {
+      "filePath": "board/$board.jsx"
+    },
     "/post/$post": {
       "filePath": "post/$post.jsx"
     },
     "/projects/$projects": {
       "filePath": "projects/$projects.jsx"
     },
+
+    "/board/task/$taskId": {
+      "filePath": "board/task/$taskId.jsx"
+    },
+
     "/projects/projects-id/projectsId": {
       "filePath": "projects/projects-id/projectsId.jsx"
     }

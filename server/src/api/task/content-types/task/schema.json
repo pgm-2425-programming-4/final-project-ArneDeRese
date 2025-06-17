@@ -17,6 +17,7 @@
     "Description": {
       "type": "text"
     },
+    "statuses": {
     {
     "statuses": {
       "type": "relation",
@@ -36,6 +37,7 @@
       "relation": "manyToOne",
       "target": "api::project.project",
       "inversedBy": "tasks"
-    }
+    },
+
   }
 }
