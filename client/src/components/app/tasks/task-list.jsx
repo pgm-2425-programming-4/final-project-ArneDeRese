@@ -1,35 +1,13 @@
-import { useEffect, useState } from "react";
-import { fetchTaks } from "../../../data/fetchTask";
-
-export function TaskList() {
-  const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    async function loadTasks() {
-      const data = await fetchTaks();
-      setTasks(data.data || []);
-    }
-    loadTasks();
-  }, []);
-
+export function TaskList({ tasks }) {
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
+        <ul>
           {tasks.map((task) => (
-            <tr key={task.id}>
-              <td>{task.Title}</td>
-              <td>{task.statuses?.Name}</td>
-            </tr>
+            <li key={task.id}>
+              {task.Title}
+            </li>
           ))}
-        </tbody>
-      </table>
+        </ul>
     </div>
   );
 }
