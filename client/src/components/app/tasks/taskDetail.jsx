@@ -7,6 +7,7 @@ export function BacklogList({ tasks }) {;
           <th>Title</th>
           <th>Description</th>
           <th>Status</th>
+          <th>Project</th>
         </tr>
       </thead>
       <tbody>
