@@ -1,4 +1,4 @@
-
+import { UpdateStatus } from "../updated/put";
 
 export function TaskDetail({ tasks }) {
   if (!tasks) return null;
@@ -23,6 +23,10 @@ export function TaskDetail({ tasks }) {
           ))}
         </tbody>
       </table>
+      <div style={{ marginTop: "1rem" }}>
+        <strong>Update Task Status</strong>
+        <UpdateStatus task={tasks[0]} onUpdated={() => window.location.reload()} />
+      </div>
     </div>
   );
 }
