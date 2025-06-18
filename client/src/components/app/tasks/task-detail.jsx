@@ -11,7 +11,6 @@ export function TaskDetail({ tasks }) {
             <th>Title</th>
             <th>Description</th>
             <th>Status</th>
-            <th>Project</th>
           </tr>
         </thead>
         <tbody>
@@ -20,7 +19,6 @@ export function TaskDetail({ tasks }) {
               <td>{task.Title}</td>
               <td>{task.Description}</td>
               <td>{task.statuses?.Name}</td>
-              <td>{task.project?.Title}</td>
             </tr>
           ))}
         </tbody>
