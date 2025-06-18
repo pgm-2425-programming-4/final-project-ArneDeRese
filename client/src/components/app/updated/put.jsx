@@ -52,9 +52,9 @@ export function UpdateStatus({ task, onUpdated }) {
         disabled={loading}
       >
         <option value="">Kies een status</option>
-        {statuses.map(s => (
-          <option key={s.id} value={s.id}>
-            {s.attributes?.Name || s.Name}
+        {statuses.map(status => (
+          <option key={status.id} value={status.id}>
+            {status.attributes?.Name || status.Name}
           </option>
         ))}
       </select>
