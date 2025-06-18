@@ -5,5 +5,12 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
-  return <div>Welkom</div>;
+  return (
+    <section className="section">
+      <div className="container">
+        <h1 className="title is-2 has-text-centered">Welkom</h1>
+      </div>
+    </section>
+  );
 }
+
