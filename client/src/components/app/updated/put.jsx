@@ -90,9 +90,7 @@ export function UpdateStatus({ task, onUpdated }) {
 
       {message && (
         <div
-          className={`notification mt-3 ${
-            error ? "is-danger" : "is-success"
-          }`}
+          className={`notification mt-3 ${error ? "is-danger" : "is-success"}`}
         >
           {message}
         </div>

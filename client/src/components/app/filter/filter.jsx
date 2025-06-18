@@ -19,4 +19,3 @@ export function StatusFilter({ statusOrder, selectedStatus, onChange }) {
     </div>
   );
 }
-

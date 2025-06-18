@@ -50,7 +50,10 @@ function RouteComponent() {
                 <ul>
                   {groupedTasks[status].map((task) => (
                     <li key={task.id}>
-                      <Link to={`/board/task/${task.id}`} className="has-text-dark">
+                      <Link
+                        to={`/board/task/${task.id}`}
+                        className="has-text-dark"
+                      >
                         {task.Title}
                       </Link>
                     </li>
@@ -64,7 +67,10 @@ function RouteComponent() {
               <ul>
                 {tasksToShow.map((task) => (
                   <li key={task.id}>
-                    <Link to={`/board/task/${task.id}`} className="has-text-dark">
+                    <Link
+                      to={`/board/task/${task.id}`}
+                      className="has-text-dark"
+                    >
                       {task.Title}
                     </Link>
                   </li>
