@@ -58,51 +58,92 @@ export const Create = () => {
   };
 
   return (
-    <div className="create">
-      <h2>Add a New Task</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          required
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <label>Description:</label>
-        <textarea
-          required
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-        <label>Status:</label>
-        <select
-          required
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        >
-          <option value="">Kies een status</option>
-          {statuses.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.attributes?.Name || s.Name}
-            </option>
-          ))}
-        </select>
-        <label>Project:</label>
-        <select
-          required
-          value={project}
-          onChange={(e) => setProject(e.target.value)}
-        >
-          <option value="">Kies een project</option>
-          {projects.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.attributes?.Title || p.Title}
-            </option>
-          ))}
-        </select>
-        <button type="submit">Add Task</button>
-      </form>
-      {success && <p style={{ color: "green" }}>Task successfully created!</p>}
-    </div>
+    <section className="section">
+      <div className="container" style={{ maxWidth: "600px" }}>
+        <h2 className="title is-3 has-text-centered">Add a New Task</h2>
+
+        <form onSubmit={handleSubmit}>
+          <div className="field">
+            <label className="label">Title</label>
+            <div className="control">
+              <input
+                className="input"
+                type="text"
+                required
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Description</label>
+            <div className="control">
+              <textarea
+                className="textarea"
+                required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Status</label>
+            <div className="control">
+              <div className="select is-fullwidth">
+                <select
+                  required
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option value="">Kies een status</option>
+                  {statuses.map((s) => (
+                    <option key={s.id} value={s.id}>
+                      {s.attributes?.Name || s.Name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Project</label>
+            <div className="control">
+              <div className="select is-fullwidth">
+                <select
+                  required
+                  value={project}
+                  onChange={(e) => setProject(e.target.value)}
+                >
+                  <option value="">Kies een project</option>
+                  {projects.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.attributes?.Title || p.Title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="field is-grouped is-grouped-right">
+            <div className="control">
+              <button type="submit" className="button is-primary">
+                Add Task
+              </button>
+            </div>
+          </div>
+        </form>
+
+        {success && (
+          <div className="notification is-success mt-4">
+            Task successfully created!
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
+
