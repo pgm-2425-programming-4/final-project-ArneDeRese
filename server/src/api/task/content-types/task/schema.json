@@ -23,12 +23,6 @@
       "target": "api::status.status",
       "inversedBy": "tasks"
     },
-    "projects": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::project.project",
-      "mappedBy": "task"
-    },
     "project": {
       "type": "relation",
       "relation": "manyToOne",
