@@ -10,7 +10,6 @@ export const Create = () => {
   const [statuses, setStatuses] = useState([]);
   const [projects, setProjects] = useState([]);
 
-  // Haal alle statussen op
   useEffect(() => {
     fetch(`${API_URL}/statuses`, {
       headers: { Authorization: `Bearer ${API_TOKEN}` },
@@ -19,7 +18,6 @@ export const Create = () => {
       .then((data) => setStatuses(data.data || []));
   }, []);
 
-  // Haal alle projecten op
   useEffect(() => {
     fetch(`${API_URL}/projects`, {
       headers: { Authorization: `Bearer ${API_TOKEN}` },
