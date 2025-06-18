@@ -28,7 +28,7 @@ export function UpdateStatus({ task, onUpdated }) {
         },
         body: JSON.stringify({
           data: {
-            statuses: status,
+            statuses: Number(status)
           },
         }),
       });
@@ -41,6 +41,8 @@ export function UpdateStatus({ task, onUpdated }) {
       setLoading(false);
     }
   }
+
+  console.log("Task id:", task.id);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -59,7 +61,7 @@ export function UpdateStatus({ task, onUpdated }) {
         ))}
       </select>
       <button type="submit" disabled={loading}>Opslaan</button>
-      {message && <span style={{ marginLeft: 10 }}>{message}</span>}
+      {message && <span>{message}</span>}
     </form>
   );
 }
