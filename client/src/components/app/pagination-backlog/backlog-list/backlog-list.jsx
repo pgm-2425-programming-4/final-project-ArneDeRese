@@ -21,8 +21,7 @@ export function BacklogList({ tasks }) {
               <tr key={task.id}>
                 <td>{task.Title}</td>
                 <td>{task.Description}</td>
-                <td>{task.statuses.Name}</td>
-g
+                <td>{task.statuses.Name}</td>g
                 <td>
                   <UpdateStatus
                     task={tasks[0]}

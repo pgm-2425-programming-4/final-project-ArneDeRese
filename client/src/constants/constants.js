@@ -1,4 +1,3 @@
-
 export const API_URL = import.meta.env.PROD
   ? "https://final-project-arnederese.onrender.com/api"
   : "http://localhost:1337/api";
@@ -6,6 +5,5 @@ export const API_URL = import.meta.env.PROD
 export const API_TOKEN = import.meta.env.PROD
   ? "2670e9348ae7064f31b1ab807ed3033c27e77b67fdd2f489ded6d924b0a40475b97a7996bc492b8bae20ac75ee115d341975b72f58f5343c7dbce618fdf652277f380019073951bf98ed5900df5b4647d4d9664b755f8971596feeb9519f68b0859af44b5d62a347d71aa133e6d93e0d48914f4e28f68b9955969c7bfc8a4786"
   : "abd551a679adb651236c97c6878b0ade12d43411a7cd092fd35bd55b8f8a3be66b6f629d89a9d47a3f1b8a535242eeb52e8bb96a935cd2e2e23863f411677f6634ba410287009af3b21b7070bea397a53e489e683d336f69b17ec14a8b2d0b2f712596598d742f28d213895e3ccb5d4c99991fdb56f2cc4bf3e325989982817c";
-
 
 export const PAGE_SIZE_OPTIONS = [5, 10, 25, 50];
