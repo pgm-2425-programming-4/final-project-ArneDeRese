@@ -17,7 +17,7 @@ export const Route = createFileRoute("/board/$board")({
 function RouteComponent() {
   const { tasks } = Route.useLoaderData();
 
-  const statusOrder = ["done", "in progress", "ready for review", "to do"];
+  const statusOrder = ["to do", "in progress", "ready for review", "done"];
 
   const [selectedStatus, setSelectedStatus] = useState("all");
 
@@ -50,7 +50,10 @@ function RouteComponent() {
                 <ul>
                   {groupedTasks[status].map((task) => (
                     <li key={task.id}>
-                      <Link to={`/board/task/${task.id}`} className="has-text-dark">
+                      <Link
+                        to={`/board/task/${task.id}`}
+                        className="has-text-dark"
+                      >
                         {task.Title}
                       </Link>
                     </li>
@@ -64,7 +67,10 @@ function RouteComponent() {
               <ul>
                 {tasksToShow.map((task) => (
                   <li key={task.id}>
-                    <Link to={`/board/task/${task.id}`} className="has-text-dark">
+                    <Link
+                      to={`/board/task/${task.id}`}
+                      className="has-text-dark"
+                    >
                       {task.Title}
                     </Link>
                   </li>

@@ -22,10 +22,13 @@ export function BacklogList({ tasks }) {
                 <td>{task.Title}</td>
                 <td>{task.Description}</td>
                 <td>{task.statuses.Name}</td>
-                <td><UpdateStatus
-                          task={tasks[0]}
-                          onUpdated={() => window.location.reload()}
-                /></td>
+g
+                <td>
+                  <UpdateStatus
+                    task={tasks[0]}
+                    onUpdated={() => window.location.reload()}
+                  />
+                </td>
               </tr>
             );
           })}

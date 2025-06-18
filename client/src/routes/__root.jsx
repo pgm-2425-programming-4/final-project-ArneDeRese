@@ -11,7 +11,11 @@ function NotFound() {
 export const Route = createRootRoute({
   component: () => (
     <QueryClientProvider client={queryClient}>
-      <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+      <nav
+        className="navbar is-primary"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div className="navbar-menu">
           <div className="navbar-start">
             <Link to="/" className="navbar-item">
