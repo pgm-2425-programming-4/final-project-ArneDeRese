@@ -5,7 +5,6 @@ import { TaskList } from '../../components/app/tasks/task-list'
 export const Route = createFileRoute('/board/$board')({
   loader: async ({ params }) => {
     const data = await fetchTaks();
-    // Filter taken op project.id === params.board (params.board is het projectId)
     const filteredTasks = (data.data || []).filter(
       (task) => String(task.project?.id) === params.board
     );
