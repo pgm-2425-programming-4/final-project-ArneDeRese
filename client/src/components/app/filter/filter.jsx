@@ -1,10 +1,10 @@
 
- export function StatusFilter({ statusOrder, selectedStatus, onChange }) {
+ export function StatusFilter({ statusOrder, onChange }) {
   return (
-    <div style={{ marginBottom: 20 }}>
+    <div >
       <button
         onClick={() => onChange('all')}
-        style={{ fontWeight: selectedStatus === 'all' ? 'bold' : 'normal' }}
+        
       >
         All
       </button>
@@ -12,10 +12,7 @@
         <button
           key={status}
           onClick={() => onChange(status)}
-          style={{
-            marginLeft: 8,
-            fontWeight: selectedStatus === status ? 'bold' : 'normal'
-          }}
+          
         >
           {status}
         </button>
