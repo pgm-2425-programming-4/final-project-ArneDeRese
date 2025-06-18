@@ -40,3 +40,4 @@ export function TaskDetail({ tasks }) {
     </section>
   );
 }
+
