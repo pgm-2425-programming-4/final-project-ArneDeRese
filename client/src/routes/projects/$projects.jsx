@@ -19,7 +19,7 @@ function RouteComponent() {
   return (
     <div>
       {projectsData.data.map((project) => (
-        <Link key={project.id} to={`/projects/projects-id/${project.documentId}`}>
+        <Link key={project.id} to={`/board/${project.id}`}>
           <h1>{project.Title}</h1>
         </Link>
       ))}
