@@ -17,7 +17,6 @@ import { Route as ProjectsProjectsImport } from './routes/projects/$projects'
 import { Route as PostPostImport } from './routes/post/$post'
 import { Route as BoardBoardImport } from './routes/board/$board'
 import { Route as BacklogBacklogImport } from './routes/backlog/$backlog'
-import { Route as ProjectsProjectsIdProjectsIdImport } from './routes/projects/projects-id/projectsId'
 import { Route as BoardTaskTaskIdImport } from './routes/board/task/$taskId'
 
 // Create/Update Routes
@@ -57,13 +56,6 @@ const BacklogBacklogRoute = BacklogBacklogImport.update({
   path: '/backlog/$backlog',
   getParentRoute: () => rootRoute,
 } as any)
-
-const ProjectsProjectsIdProjectsIdRoute =
-  ProjectsProjectsIdProjectsIdImport.update({
-    id: '/projects/projects-id/projectsId',
-    path: '/projects/projects-id/projectsId',
-    getParentRoute: () => rootRoute,
-  } as any)
 
 const BoardTaskTaskIdRoute = BoardTaskTaskIdImport.update({
   id: '/board/task/$taskId',
@@ -124,13 +116,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoardTaskTaskIdImport
       parentRoute: typeof rootRoute
     }
-    '/projects/projects-id/projectsId': {
-      id: '/projects/projects-id/projectsId'
-      path: '/projects/projects-id/projectsId'
-      fullPath: '/projects/projects-id/projectsId'
-      preLoaderRoute: typeof ProjectsProjectsIdProjectsIdImport
-      parentRoute: typeof rootRoute
-    }
   }
 }
 
@@ -144,7 +129,6 @@ export interface FileRoutesByFullPath {
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/board/task/$taskId': typeof BoardTaskTaskIdRoute
-  '/projects/projects-id/projectsId': typeof ProjectsProjectsIdProjectsIdRoute
 }
 
 export interface FileRoutesByTo {
@@ -155,7 +139,6 @@ export interface FileRoutesByTo {
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/board/task/$taskId': typeof BoardTaskTaskIdRoute
-  '/projects/projects-id/projectsId': typeof ProjectsProjectsIdProjectsIdRoute
 }
 
 export interface FileRoutesById {
@@ -167,7 +150,6 @@ export interface FileRoutesById {
   '/post/$post': typeof PostPostRoute
   '/projects/$projects': typeof ProjectsProjectsRoute
   '/board/task/$taskId': typeof BoardTaskTaskIdRoute
-  '/projects/projects-id/projectsId': typeof ProjectsProjectsIdProjectsIdRoute
 }
 
 export interface FileRouteTypes {
@@ -180,7 +162,6 @@ export interface FileRouteTypes {
     | '/post/$post'
     | '/projects/$projects'
     | '/board/task/$taskId'
-    | '/projects/projects-id/projectsId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -190,7 +171,6 @@ export interface FileRouteTypes {
     | '/post/$post'
     | '/projects/$projects'
     | '/board/task/$taskId'
-    | '/projects/projects-id/projectsId'
   id:
     | '__root__'
     | '/'
@@ -200,7 +180,6 @@ export interface FileRouteTypes {
     | '/post/$post'
     | '/projects/$projects'
     | '/board/task/$taskId'
-    | '/projects/projects-id/projectsId'
   fileRoutesById: FileRoutesById
 }
 
@@ -212,7 +191,6 @@ export interface RootRouteChildren {
   PostPostRoute: typeof PostPostRoute
   ProjectsProjectsRoute: typeof ProjectsProjectsRoute
   BoardTaskTaskIdRoute: typeof BoardTaskTaskIdRoute
-  ProjectsProjectsIdProjectsIdRoute: typeof ProjectsProjectsIdProjectsIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -223,7 +201,6 @@ const rootRouteChildren: RootRouteChildren = {
   PostPostRoute: PostPostRoute,
   ProjectsProjectsRoute: ProjectsProjectsRoute,
   BoardTaskTaskIdRoute: BoardTaskTaskIdRoute,
-  ProjectsProjectsIdProjectsIdRoute: ProjectsProjectsIdProjectsIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -242,8 +219,7 @@ export const routeTree = rootRoute
         "/board/$board",
         "/post/$post",
         "/projects/$projects",
-        "/board/task/$taskId",
-        "/projects/projects-id/projectsId"
+        "/board/task/$taskId"
       ]
     },
     "/": {
@@ -266,9 +242,6 @@ export const routeTree = rootRoute
     },
     "/board/task/$taskId": {
       "filePath": "board/task/$taskId.jsx"
-    },
-    "/projects/projects-id/projectsId": {
-      "filePath": "projects/projects-id/projectsId.jsx"
     }
   }
 }
