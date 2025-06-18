@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { API_URL, API_TOKEN } from "../../../constants/constants.js";
 
 export const Create = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [status, setStatus] = useState('');
-  const [project, setProject] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("");
+  const [project, setProject] = useState("");
   const [success, setSuccess] = useState(false);
   const [statuses, setStatuses] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -13,19 +13,19 @@ export const Create = () => {
   // Haal alle statussen op
   useEffect(() => {
     fetch(`${API_URL}/statuses`, {
-      headers: { Authorization: `Bearer ${API_TOKEN}` }
+      headers: { Authorization: `Bearer ${API_TOKEN}` },
     })
-      .then(res => res.json())
-      .then(data => setStatuses(data.data || []));
+      .then((res) => res.json())
+      .then((data) => setStatuses(data.data || []));
   }, []);
 
   // Haal alle projecten op
   useEffect(() => {
     fetch(`${API_URL}/projects`, {
-      headers: { Authorization: `Bearer ${API_TOKEN}` }
+      headers: { Authorization: `Bearer ${API_TOKEN}` },
     })
-      .then(res => res.json())
-      .then(data => setProjects(data.data || []));
+      .then((res) => res.json())
+      .then((data) => setProjects(data.data || []));
   }, []);
 
   const handleSubmit = async (e) => {
@@ -48,10 +48,10 @@ export const Create = () => {
     });
 
     if (response.ok) {
-      setTitle('');
-      setDescription('');
-      setStatus('');
-      setProject('');
+      setTitle("");
+      setDescription("");
+      setStatus("");
+      setProject("");
       setSuccess(true);
     } else {
       console.error("Task creation failed");
@@ -64,9 +64,9 @@ export const Create = () => {
       <h2>Add a New Task</h2>
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
-        <input 
-          type="text" 
-          required 
+        <input
+          type="text"
+          required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -80,10 +80,10 @@ export const Create = () => {
         <select
           required
           value={status}
-          onChange={e => setStatus(e.target.value)}
+          onChange={(e) => setStatus(e.target.value)}
         >
           <option value="">Kies een status</option>
-          {statuses.map(s => (
+          {statuses.map((s) => (
             <option key={s.id} value={s.id}>
               {s.attributes?.Name || s.Name}
             </option>
@@ -93,10 +93,10 @@ export const Create = () => {
         <select
           required
           value={project}
-          onChange={e => setProject(e.target.value)}
+          onChange={(e) => setProject(e.target.value)}
         >
           <option value="">Kies een project</option>
-          {projects.map(p => (
+          {projects.map((p) => (
             <option key={p.id} value={p.id}>
               {p.attributes?.Title || p.Title}
             </option>

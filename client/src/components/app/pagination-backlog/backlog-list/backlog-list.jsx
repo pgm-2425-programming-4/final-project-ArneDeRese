@@ -1,30 +1,29 @@
 export function BacklogList({ tasks }) {
   const backlogTasks = tasks.filter(
-    (task) => task.statuses?.Name?.toLowerCase() === "backlog"
+    (task) => task.statuses?.Name?.toLowerCase() === "backlog",
   );
   return (
     <div>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {backlogTasks.map((task) => {
-          return (
-            <tr key={task.id}>
-              <td>{task.Title}</td>
-              <td>{task.Description}</td>
-              <td>{task.statuses.Name}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {backlogTasks.map((task) => {
+            return (
+              <tr key={task.id}>
+                <td>{task.Title}</td>
+                <td>{task.Description}</td>
+                <td>{task.statuses.Name}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
-    
   );
 }

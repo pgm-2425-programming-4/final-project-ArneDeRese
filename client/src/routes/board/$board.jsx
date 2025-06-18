@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { createFileRoute, Link } from '@tanstack/react-router'
-import { fetchTaks } from '../../data/fetchTask'
-import { StatusFilter } from '../../components/app/filter/filter';
+import React, { useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { fetchTaks } from "../../data/fetchTask";
+import { StatusFilter } from "../../components/app/filter/filter";
 
-export const Route = createFileRoute('/board/$board')({
+export const Route = createFileRoute("/board/$board")({
   loader: async ({ params }) => {
     const data = await fetchTaks();
     const filteredTasks = (data.data || []).filter(
-      (task) => String(task.project?.id) === params.board
+      (task) => String(task.project?.id) === params.board,
     );
     return { tasks: filteredTasks };
   },
@@ -19,21 +19,20 @@ function RouteComponent() {
 
   const statusOrder = ["done", "in progress", "ready for review", "to do"];
 
-   const [selectedStatus, setSelectedStatus] = useState('all');
+  const [selectedStatus, setSelectedStatus] = useState("all");
 
   const groupedTasks = statusOrder.reduce((acc, status) => {
     acc[status] = tasks.filter(
-      (task) => task.statuses?.Name?.toLowerCase() === status
+      (task) => task.statuses?.Name?.toLowerCase() === status,
     );
     return acc;
   }, {});
 
-  const tasksToShow = selectedStatus === 'all'
-    ? tasks
-    : groupedTasks[selectedStatus] || [];
+  const tasksToShow =
+    selectedStatus === "all" ? tasks : groupedTasks[selectedStatus] || [];
 
   return (
-     <div>
+    <div>
       <StatusFilter
         statusOrder={statusOrder}
         selectedStatus={selectedStatus}
@@ -41,16 +40,16 @@ function RouteComponent() {
       />
 
       <ul>
-        {selectedStatus === 'all' ? (
-          statusOrder.map(status => (
+        {selectedStatus === "all" ? (
+          statusOrder.map((status) => (
             <li key={status}>
-              <h2><strong>{status}</strong></h2>
+              <h2>
+                <strong>{status}</strong>
+              </h2>
               <ul>
-                {groupedTasks[status].map(task => (
+                {groupedTasks[status].map((task) => (
                   <li key={task.id}>
-                    <Link to={`/board/task/${task.id}`}>
-                      {task.Title}
-                    </Link>
+                    <Link to={`/board/task/${task.id}`}>{task.Title}</Link>
                   </li>
                 ))}
               </ul>
@@ -58,13 +57,13 @@ function RouteComponent() {
           ))
         ) : (
           <li>
-            <h2><strong>{selectedStatus}</strong></h2>
+            <h2>
+              <strong>{selectedStatus}</strong>
+            </h2>
             <ul>
-              {tasksToShow.map(task => (
+              {tasksToShow.map((task) => (
                 <li key={task.id}>
-                  <Link to={`/board/task/${task.id}`}>
-                    {task.Title}
-                  </Link>
+                  <Link to={`/board/task/${task.id}`}>{task.Title}</Link>
                 </li>
               ))}
             </ul>

@@ -25,7 +25,10 @@ export function TaskDetail({ tasks }) {
       </table>
       <div style={{ marginTop: "1rem" }}>
         <strong>Update Task Status</strong>
-        <UpdateStatus task={tasks[0]} onUpdated={() => window.location.reload()} />
+        <UpdateStatus
+          task={tasks[0]}
+          onUpdated={() => window.location.reload()}
+        />
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/about')({
+export const Route = createFileRoute("/about")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div>Dit is mijn project voor pgm-4</div>
+  return <div>Dit is mijn project voor pgm-4</div>;
 }
