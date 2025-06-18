@@ -3,9 +3,13 @@ import { fetchTaks } from '../../data/fetchTask'
 import { TaskList } from '../../components/app/tasks/task-list'
 
 export const Route = createFileRoute('/board/$board')({
-  loader: async () => {
+  loader: async ({ params }) => {
     const data = await fetchTaks();
-    return { tasks: data.data || [] };
+    // Filter taken op project.id === params.board (params.board is het projectId)
+    const filteredTasks = (data.data || []).filter(
+      (task) => String(task.project?.id) === params.board
+    );
+    return { tasks: filteredTasks };
   },
   component: RouteComponent,
 });
@@ -14,11 +18,8 @@ function RouteComponent() {
   const { tasks } = Route.useLoaderData();
 
   const statusOrder = ["done", "in progress", "ready for review", "to do"];
-  const filteredTasks = tasks.filter(
-    (task) => task.statuses?.Name?.toLowerCase() !== "backlog"
-  );
   const groupedTasks = statusOrder.reduce((acc, status) => {
-    acc[status] = filteredTasks.filter(
+    acc[status] = tasks.filter(
       (task) => task.statuses?.Name?.toLowerCase() === status
     );
     return acc;
