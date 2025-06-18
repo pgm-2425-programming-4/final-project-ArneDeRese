@@ -10,19 +10,32 @@ export const Route = createFileRoute("/projects/$projects")({
     return data;
   },
   component: RouteComponent,
-  notFoundComponent: () => <div>User not found</div>,
+  notFoundComponent: () => (
+    <div className="notification is-danger">User not found</div>
+  ),
 });
 
 function RouteComponent() {
   const projectsData = Route.useLoaderData();
 
   return (
-    <div>
-      {projectsData.data.map((project) => (
-        <Link key={project.id} to={`/board/${project.id}`}>
-          <h1>{project.Title}</h1>
-        </Link>
-      ))}
-    </div>
+    <section className="section">
+      <div className="container">
+        <h1 className="title is-3 has-text-centered">Projecten</h1>
+
+        <div className="columns is-multiline">
+          {projectsData.data.map((project) => (
+            <div key={project.id} className="column is-half">
+              <Link to={`/board/${project.id}`}>
+                <div className="box has-background-light has-text-black">
+                  <h2 className="title is-5">{project.Title}</h2>
+                  <p>Klik om taken te bekijken</p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -12,11 +12,6 @@ export const Route = createRootRoute({
   component: () => (
     <QueryClientProvider client={queryClient}>
       <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item has-text-weight-bold">
-            Mijn App
-          </Link>
-        </div>
         <div className="navbar-menu">
           <div className="navbar-start">
             <Link to="/" className="navbar-item">
