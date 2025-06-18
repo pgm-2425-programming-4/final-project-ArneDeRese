@@ -5,34 +5,45 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 const queryClient = new QueryClient();
 
 function NotFound() {
-  return <div>Pagina niet gevonden</div>;
+  return <div className="notification is-danger">Pagina niet gevonden</div>;
 }
 
 export const Route = createRootRoute({
   component: () => (
     <QueryClientProvider client={queryClient}>
-      {
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/projects/$projectsId">Projects</Link>
-            </li>
-            <li>
-              <Link to="/backlog/$backlog">Backlog</Link>
-            </li>
-            <li>
-              <Link to="/post/$post">Add new task</Link>
-            </li>
-          </ul>
-        </nav>
-      }
-      <Outlet />
+      <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
+          <Link to="/" className="navbar-item has-text-weight-bold">
+            Mijn App
+          </Link>
+        </div>
+        <div className="navbar-menu">
+          <div className="navbar-start">
+            <Link to="/" className="navbar-item">
+              Home
+            </Link>
+            <Link to="/about" className="navbar-item">
+              About
+            </Link>
+            <Link to="/projects/$projectsId" className="navbar-item">
+              Projects
+            </Link>
+            <Link to="/backlog/$backlog" className="navbar-item">
+              Backlog
+            </Link>
+            <Link to="/post/nieuw" className="navbar-item">
+              Add new task
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <section className="section">
+        <div className="container">
+          <Outlet />
+        </div>
+      </section>
+
       <TanStackRouterDevtools />
     </QueryClientProvider>
   ),
