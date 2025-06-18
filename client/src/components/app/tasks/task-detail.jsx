@@ -23,7 +23,7 @@ export function TaskDetail({ tasks }) {
           ))}
         </tbody>
       </table>
-      <div style={{ marginTop: "1rem" }}>
+      <div>
         <strong>Update Task Status</strong>
         <UpdateStatus
           task={tasks[0]}
