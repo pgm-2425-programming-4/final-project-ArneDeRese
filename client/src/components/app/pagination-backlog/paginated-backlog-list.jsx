@@ -5,15 +5,11 @@ import { useQuery } from "@tanstack/react-query";
 import { BacklogList } from "./backlog-list/backlog-list.jsx";
 import { Pagination } from "./pagination/pagination.jsx";
 
-
-
-
-
 export function PaginatedBacklogList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZE_OPTIONS[0]);
-  const [tasks , setBacklogs] = useState([]);
+  const [tasks, setBacklogs] = useState([]);
 
   function handlePageChanged(pageNumber) {
     setCurrentPage(pageNumber);

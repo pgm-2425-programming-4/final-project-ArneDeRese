@@ -9,10 +9,10 @@ export function UpdateStatus({ task, onUpdated }) {
 
   useEffect(() => {
     fetch(`${API_URL}/statuses`, {
-      headers: { Authorization: `Bearer ${API_TOKEN}` }
+      headers: { Authorization: `Bearer ${API_TOKEN}` },
     })
-      .then(res => res.json())
-      .then(data => setStatuses(data.data || []));
+      .then((res) => res.json())
+      .then((data) => setStatuses(data.data || []));
   }, []);
 
   async function handleSubmit(e) {
@@ -28,7 +28,7 @@ export function UpdateStatus({ task, onUpdated }) {
         },
         body: JSON.stringify({
           data: {
-            statuses: Number(status)
+            statuses: Number(status),
           },
         }),
       });
@@ -49,21 +49,21 @@ export function UpdateStatus({ task, onUpdated }) {
       <label>Status:</label>
       <select
         value={status}
-        onChange={e => setStatus(e.target.value)}
+        onChange={(e) => setStatus(e.target.value)}
         required
         disabled={loading}
       >
         <option value="">Kies een status</option>
-        {statuses.map(status => (
+        {statuses.map((status) => (
           <option key={status.id} value={status.id}>
             {status.attributes?.Name || status.Name}
           </option>
         ))}
       </select>
-      <button type="submit" disabled={loading}>Opslaan</button>
+      <button type="submit" disabled={loading}>
+        Opslaan
+      </button>
       {message && <span>{message}</span>}
     </form>
   );
 }
-
-
