@@ -17,7 +17,7 @@ export const Route = createFileRoute("/board/$board")({
 function RouteComponent() {
   const { tasks } = Route.useLoaderData();
 
-  const statusOrder = ["done", "in progress", "ready for review", "to do"];
+  const statusOrder = ["to do", "in progress", "ready for review", "done"];
 
   const [selectedStatus, setSelectedStatus] = useState("all");
 
