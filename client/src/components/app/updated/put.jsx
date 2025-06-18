@@ -6,6 +6,7 @@ export function UpdateStatus({ task, onUpdated }) {
   const [statuses, setStatuses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetch(`${API_URL}/statuses`, {
@@ -15,10 +16,16 @@ export function UpdateStatus({ task, onUpdated }) {
       .then((data) => setStatuses(data.data || []));
   }, []);
 
+  useEffect(() => {
+    setStatus(task.statuses?.id || "");
+  }, [task]);
+
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
     setMessage("");
+    setError(false);
+
     try {
       const response = await fetch(`${API_URL}/tasks/${task.id}`, {
         method: "PUT",
@@ -32,38 +39,64 @@ export function UpdateStatus({ task, onUpdated }) {
           },
         }),
       });
+
       if (!response.ok) throw new Error("Update mislukt");
+
       setMessage("Status succesvol aangepast!");
       if (onUpdated) onUpdated();
-    } catch {
+    } catch (error) {
+      console.error("Fout bij updaten:", error);
+      setError(true);
       setMessage("Fout bij updaten.");
     } finally {
       setLoading(false);
     }
   }
 
-  console.log("Task id:", task.id);
-
   return (
     <form onSubmit={handleSubmit}>
-      <label>Status:</label>
-      <select
-        value={status}
-        onChange={(e) => setStatus(e.target.value)}
-        required
-        disabled={loading}
-      >
-        <option value="">Kies een status</option>
-        {statuses.map((status) => (
-          <option key={status.id} value={status.id}>
-            {status.attributes?.Name || status.Name}
-          </option>
-        ))}
-      </select>
-      <button type="submit" disabled={loading}>
-        Opslaan
-      </button>
-      {message && <span>{message}</span>}
+      <div className="field">
+        <label className="label">Status</label>
+        <div className="control">
+          <div className="select is-fullwidth">
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              required
+              disabled={loading}
+            >
+              <option value="">Kies een status</option>
+              {statuses.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.attributes?.Name || s.Name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="field">
+        <div className="control">
+          <button
+            type="submit"
+            className={`button is-link ${loading ? "is-loading" : ""}`}
+            disabled={loading}
+          >
+            Opslaan
+          </button>
+        </div>
+      </div>
+
+      {message && (
+        <div
+          className={`notification mt-3 ${
+            error ? "is-danger" : "is-success"
+          }`}
+        >
+          {message}
+        </div>
+      )}
     </form>
   );
 }
