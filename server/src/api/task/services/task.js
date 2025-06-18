@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * backlog service
+ * task service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::backlog.backlog');
+module.exports = createCoreService('api::task.task');

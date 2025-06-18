@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * backlog router
+ * task router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::backlog.backlog');
+module.exports = createCoreRouter('api::task.task');
